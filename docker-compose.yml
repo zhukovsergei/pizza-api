@@ -1,0 +1,56 @@
+version: '3'
+services:
+    nginx:
+        container_name: pizza-nginx
+        image: nginx:latest
+        ports:
+            - "8080:80"
+        volumes:
+            - ./app:/var/www/symfony
+            - ./nginx/site.conf:/etc/nginx/conf.d/default.conf
+        working_dir: /var/www/symfony
+        depends_on:
+            - php-fpm
+
+    php-cli:
+        container_name: pizza-php-cli
+        build:
+            context: .
+            dockerfile: ./php/php-cli.docker
+        environment:
+            APP_ENV: dev
+        volumes:
+            - ./app:/var/www/symfony
+        working_dir: /var/www/symfony
+        depends_on:
+            - postgres
+
+    php-fpm:
+        container_name: pizza-php-fpm
+        build:
+            context: .
+            dockerfile: ./php/php-fpm.docker
+        environment:
+            APP_ENV: dev
+        volumes:
+            - ./app:/var/www/symfony
+        working_dir: /var/www/symfony
+        depends_on:
+            - postgres
+
+    postgres:
+        container_name: pizza-postgres
+        image: postgres:alpine
+#        restart: always
+        volumes:
+            - pgdata:/var/lib/postgresql/data
+        environment:
+            POSTGRES_USER: postgres
+            POSTGRES_PASSWORD: postgres
+            POSTGRES_DB: pizza
+        ports:
+            - "54321:5432"
+
+volumes:
+    pgdata:
+        driver: local
