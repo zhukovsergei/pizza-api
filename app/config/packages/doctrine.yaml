@@ -13,6 +13,7 @@ doctrine:
         types:
             pizza_id: 'App\Entity\Pizza\IdType'
             propery_id: 'App\Entity\Property\IdType'
+            price_id: 'App\Entity\Price\IdType'
 
     orm:
         auto_generate_proxy_classes: true

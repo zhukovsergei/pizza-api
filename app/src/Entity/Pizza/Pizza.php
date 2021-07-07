@@ -24,13 +24,19 @@ class Pizza
      */
     private $name;
 
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Price\Price", mappedBy="pizza")
+     */
+    private $prices;
+
     public function __construct(Id $id, $name)
     {
         $this->id = $id;
         $this->name = $name;
     }
 
-    public function getId(): ?int
+    public function getId(): ?Id
     {
         return $this->id;
     }
