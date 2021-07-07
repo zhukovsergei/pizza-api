@@ -1,21 +1,23 @@
 pizza-api is the REST API application for CRUD pizzas and set the prices
 
-1. First up docker
+0. Clone this repo.
    
-   `docker-compose up -d`
+1. Composer install
 
-2. Composer install
+   `docker-compose run --rm php-cli composer install`
 
-   `docker-compose run --rm php-cli php composer install`
-
-3. Up the migrations
+2. Up the migrations
 
    `docker-compose run --rm php-cli php bin/console doc:mi:mi`
 
-4. Load fixtures
+3. Load fixtures
 
    `docker-compose run --rm php-cli php bin/console doc:fixtures:load`
 
+4. First up docker
+
+   `docker-compose up -d`
+   
 5. First send for obtain a token
 
 POST http://localhost:8080/api/login_check 
