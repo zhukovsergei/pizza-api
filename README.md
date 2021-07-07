@@ -28,6 +28,12 @@ You will receive something like:
 
 6. Use this token as Bearer in Headers for requests
 
-7. Api is available here `http://localhost:8080/api/doc`
+![img_1.png](img_1.png)
+
+7. Api documents is available here `http://localhost:8080/api/doc`
+
+![img_3.png](img_3.png)
 
 8. Unit tests `docker-compose run --rm php-cli php bin/phpunit`
+
+![img_2.png](img_2.png)
