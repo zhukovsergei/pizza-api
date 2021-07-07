@@ -1,11 +1,11 @@
-#v1_api:
-#    resource: ../../src/Controller/Api/
-#    prefix: /api/v1
-#    name_prefix: api.v1
-#    trailing_slash_on_root: true
-#    type: annotation
-#    defaults:
-#        _format: json
+v1_api:
+    resource: ../../src/Controller/Api/V1
+    prefix: /api/v1
+    name_prefix: api.v1
+    trailing_slash_on_root: true
+    type: annotation
+    defaults:
+        _format: json
 
 controllers:
     resource: ../../src/Controller/
