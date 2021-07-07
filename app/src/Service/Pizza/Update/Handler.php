@@ -10,8 +10,8 @@ use App\Service\Doctrine\Flusher;
 
 class Handler
 {
-
     private $pizzaRepository;
+    private $flusher;
 
     public function __construct(
         PizzaRepository $pizzaRepository,

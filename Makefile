@@ -9,3 +9,6 @@ docker-up:
 
 composer-install:
 	docker-compose run --rm php-cli composer install
+
+manager-test-unit:
+	docker-compose run --rm php-cli php bin/phpunit --testsuite=unit

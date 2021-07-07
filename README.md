@@ -29,3 +29,5 @@ You will receive something like:
 6. Use this token as Bearer in Headers for requests
 
 7. Api is available here `http://localhost:8080/api/doc`
+
+8. Unit tests `docker-compose run --rm php-cli php bin/phpunit`
