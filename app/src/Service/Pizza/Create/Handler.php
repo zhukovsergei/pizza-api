@@ -24,10 +24,6 @@ class Handler
 
     public function handle(Command $command): Pizza
     {
-        if ($this->pizzaRepository->hasByName($command->name)) {
-            throw new \DomainException('Pizza with this name already exists.');
-        }
-
         $pizza = new Pizza(Id::next(), $command->name);
 
         $this->pizzaRepository->add($pizza);

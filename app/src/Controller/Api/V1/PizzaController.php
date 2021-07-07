@@ -28,6 +28,7 @@ class PizzaController extends AbstractController
     }
 
     /**
+     * Create a new pizza
      * @Route("/pizza/create", name="pizza.create", methods={"POST"})
      */
     public function create(Request $request, CreateHandler $handler): Response
@@ -49,6 +50,7 @@ class PizzaController extends AbstractController
     }
 
     /**
+     * Update a pizza by name
      * @Route("/pizza/update/{targetName}", name="pizza.update", methods={"PATCH"})
      */
     public function update(string $targetName, Request $request, UpdateHandler $handler): Response
@@ -70,7 +72,8 @@ class PizzaController extends AbstractController
     }
 
     /**
-     * @Route("/pizza/remove", name="pizza.create", methods={"DELETE"})
+     * Remove a pizza by name
+     * @Route("/pizza/remove", name="pizza.remove", methods={"DELETE"})
      */
     public function remove(Request $request, RemoveHandler $handler): Response
     {
