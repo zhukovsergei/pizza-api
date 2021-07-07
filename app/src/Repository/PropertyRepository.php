@@ -31,7 +31,7 @@ class PropertyRepository
     {
         /** @var Property $property */
         if (!$property = $this->repo->find($id)) {
-            throw new EntityNotFoundException('Pizza is not found.');
+            throw new EntityNotFoundException('Property is not found.');
         }
         return $property;
     }

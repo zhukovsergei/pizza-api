@@ -46,10 +46,6 @@ class Price
         $this->price = $price;
     }
 
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
 
     public function getName(): ?string
     {

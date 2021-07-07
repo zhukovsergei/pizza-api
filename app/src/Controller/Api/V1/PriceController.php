@@ -2,29 +2,30 @@
 
 namespace App\Controller\Api\V1;
 
-use App\ReadModel\Pizza\PropertyFetcher;
-use App\Service\Property\Create\Command as CreateCommand;
-use App\Service\Property\Create\Form as CreateForm;
-use App\Service\Property\Create\Handler as CreateHandler;
+use App\ReadModel\Pizza\PriceFetcher;
+use App\Service\Price\Create\Command as CreateCommand;
+use App\Service\Price\Create\Form as CreateForm;
+use App\Service\Price\Create\Handler as CreateHandler;
+
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class PropertyController extends AbstractController
+class PriceController extends AbstractController
 {
     /**
-     * Show all properties
-     * @Route("/property", name="property.index", methods={"GET"})
+     * Show all prices
+     * @Route("/price", name="price.index", methods={"GET"})
      */
-    public function index(PropertyFetcher $propertyFetcher): Response
+    public function index(PriceFetcher $priceFetcher): Response
     {
-        return $this->json($propertyFetcher->findAll());
+        return $this->json($priceFetcher->findAll());
     }
 
     /**
-     * Create a new property
-     * @Route("/property/create", name="property.create", methods={"POST"})
+     * Create a new pizza
+     * @Route("/price/create", name="price.create", methods={"POST"})
      */
     public function create(Request $request, CreateHandler $handler): Response
     {
@@ -37,11 +38,11 @@ class PropertyController extends AbstractController
         $form->submit($data);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $newPizza = $handler->handle($command);
-            return $this->json($newPizza);
+            $newPrice = $handler->handle($command);
+            return $this->json($newPrice);
         }
 
         throw new \DomainException('Error');
     }
-}
 
+}

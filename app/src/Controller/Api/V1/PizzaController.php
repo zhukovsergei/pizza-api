@@ -20,6 +20,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class PizzaController extends AbstractController
 {
     /**
+     * Show all pizzas
      * @Route("/pizza", name="pizza.index", methods={"GET"})
      */
     public function index(PizzaFetcher $pizzaFetcher): Response
