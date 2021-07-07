@@ -27,11 +27,7 @@ class Handler
      */
     public function handle(Command $command): Pizza
     {
-        if (!$this->pizzaRepository->hasByName($command->name)) {
-            throw new \DomainException('Pizza with this name not exists.');
-        }
-
-        $pizza = $this->pizzaRepository->getByName($command->name);
+        $pizza = $this->pizzaRepository->get($command->uuid);
 
         $this->pizzaRepository->remove($pizza);
 

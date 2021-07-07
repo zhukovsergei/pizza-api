@@ -10,16 +10,16 @@ class Command
     /**
      * @Assert\NotBlank()
      */
-    public $targetName;
+    public $targetUuid;
 
     /**
      * @Assert\NotBlank()
      */
     public $name;
 
-    public function __construct($targetName)
+    public function __construct($targetUuid)
     {
-        $this->targetName = $targetName;
+        $this->targetUuid = $targetUuid;
     }
 
 }

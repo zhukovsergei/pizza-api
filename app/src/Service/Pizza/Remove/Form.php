@@ -13,7 +13,7 @@ class Form extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('name', Type\TextType::class, ['label' => 'Pizza name']);
+            ->add('uuid', Type\TextType::class, ['label' => 'Pizza name']);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

@@ -6,6 +6,8 @@ use App\ReadModel\Pizza\PriceFetcher;
 use App\Service\Price\Create\Command as CreateCommand;
 use App\Service\Price\Create\Form as CreateForm;
 use App\Service\Price\Create\Handler as CreateHandler;
+use OpenApi\Annotations as OA;
+use Nelmio\ApiDocBundle\Annotation\Model;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -17,6 +19,11 @@ class PriceController extends AbstractController
     /**
      * Show all prices
      * @Route("/price", name="price.index", methods={"GET"})
+     * @OA\Response(
+     *     response=200,
+     *     description="Returns all prices"
+     * )
+     * @OA\Tag(name="Price")
      */
     public function index(PriceFetcher $priceFetcher): Response
     {
@@ -26,6 +33,30 @@ class PriceController extends AbstractController
     /**
      * Create a new pizza
      * @Route("/price/create", name="price.create", methods={"POST"})
+     * @OA\Response(
+     *     response=200,
+     *     description="Returns the createed pizza",
+     *     @Model(type=App\Entity\Price\Price::class)
+     * )
+     * @OA\Parameter(
+     *     name="pizza_id",
+     *     in="query",
+     *     description="Pizza UUID",
+     *     @OA\Schema(type="string")
+     * )
+     * @OA\Parameter(
+     *     name="property_id",
+     *     in="query",
+     *     description="Property UUID",
+     *     @OA\Schema(type="string")
+     * )
+     * @OA\Parameter(
+     *     name="price",
+     *     in="query",
+     *     description="The price",
+     *     @OA\Schema(type="string")
+     * )
+     * @OA\Tag(name="Price")
      */
     public function create(Request $request, CreateHandler $handler): Response
     {

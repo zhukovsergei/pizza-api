@@ -27,7 +27,7 @@ class Handler
      */
     public function handle(Command $command): Pizza
     {
-        $pizza = $this->pizzaRepository->getByName($command->targetName);
+        $pizza = $this->pizzaRepository->get($command->targetUuid);
 
         $pizza->setName($command->name);
 

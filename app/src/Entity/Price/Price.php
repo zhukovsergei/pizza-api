@@ -5,6 +5,8 @@ namespace App\Entity\Price;
 use App\Entity\Pizza\Pizza;
 use App\Entity\Property\Property;
 use Doctrine\ORM\Mapping as ORM;
+use OpenApi\Annotations as OA;
+use Nelmio\ApiDocBundle\Annotation\Model;
 
 /**
  *
@@ -14,27 +16,34 @@ use Doctrine\ORM\Mapping as ORM;
 class Price
 {
     /**
-     *
+     * Name
      * @ORM\Column(type="string", length=255)
+     * @OA\Property(type="string", description="Name is optional"))
      */
     private $name;
 
     /**
      * @ORM\Id
-     * @ORM\ManyToOne(targetEntity="App\Entity\Pizza\Pizza")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Pizza\Pizza", inversedBy="prices")
      * @ORM\JoinColumn(nullable=false)
+     *
+     * @OA\Property(type="string", format="uuid", ref=@Model(type=App\Entity\Pizza\Pizza::class))
      */
     private $pizza;
 
     /**
      * @ORM\Id
-     * @ORM\ManyToOne(targetEntity="App\Entity\Property\Property")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Property\Property", inversedBy="prices")
      * @ORM\JoinColumn(nullable=false)
+     *
+     * @OA\Property(type="string", format="uuid", ref=@Model(type=App\Entity\Property\Property::class))
      */
     private $property;
 
     /**
      * @ORM\Column(type="integer", length=10)
+     *
+     * @OA\Property(description="Price")
      */
     private $price;
 

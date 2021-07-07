@@ -10,6 +10,6 @@ class Command
     /**
      * @Assert\NotBlank()
      */
-    public $name;
+    public $uuid;
 
 }
