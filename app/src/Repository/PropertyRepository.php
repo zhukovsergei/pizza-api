@@ -3,13 +3,12 @@
 namespace App\Repository;
 
 use App\Entity\Pizza\Pizza;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use App\Entity\Property\Property;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\EntityNotFoundException;
-use Doctrine\Persistence\ManagerRegistry;
 
 
-class PizzaRepository
+class PropertyRepository
 {
     private $em;
     /**
@@ -20,21 +19,21 @@ class PizzaRepository
     public function __construct(EntityManagerInterface $em)
     {
         $this->em = $em;
-        $this->repo = $em->getRepository(Pizza::class);
+        $this->repo = $em->getRepository(Property::class);
     }
 
-    public function add(Pizza $pizza): void
+    public function add(Property $property): void
     {
-        $this->em->persist($pizza);
+        $this->em->persist($property);
     }
 
-    public function get($id): Pizza
+    public function get($id): Property
     {
-        /** @var Pizza $pizza */
-        if (!$pizza = $this->repo->find($id)) {
+        /** @var Property $property */
+        if (!$property = $this->repo->find($id)) {
             throw new EntityNotFoundException('Pizza is not found.');
         }
-        return $pizza;
+        return $property;
     }
 
     // /**

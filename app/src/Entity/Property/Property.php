@@ -1,20 +1,20 @@
 <?php
 
-namespace App\Entity\Pizza;
+namespace App\Entity\Property;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  *
  * @ORM\Entity
- * @ORM\Table(name="pizzas", uniqueConstraints={
+ * @ORM\Table(name="properties", uniqueConstraints={
  *     @ORM\UniqueConstraint(columns={"name"})
  * })
  */
-class Pizza
+class Property
 {
     /**
-     * @ORM\Column(type="pizza_id")
+     * @ORM\Column(type="propery_id")
      * @ORM\Id
      */
     private $id;

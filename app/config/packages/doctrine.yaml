@@ -12,6 +12,7 @@ doctrine:
 #            collate: -
         types:
             pizza_id: 'App\Entity\Pizza\IdType'
+            propery_id: 'App\Entity\Property\IdType'
 
     orm:
         auto_generate_proxy_classes: true
