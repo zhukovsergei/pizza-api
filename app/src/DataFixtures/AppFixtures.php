@@ -33,7 +33,6 @@ class AppFixtures extends Fixture implements FixtureGroupInterface
     public function load(ObjectManager $manager)
     {
         $pizza1 = new Pizza(PizzaId::next(), 'Margarita');
-
         $pizza2 = new Pizza(PizzaId::next(), 'Trattoria');
         $pizza3 = new Pizza(PizzaId::next(), 'Hawaii');
         $this->pizzaRepository->add($pizza1);
@@ -58,7 +57,6 @@ class AppFixtures extends Fixture implements FixtureGroupInterface
         $price6 = new Price($pizza3, $prop1, 150);
 
         $this->priceRepository->add($price1);
-
         $this->priceRepository->add($price2);
         $this->priceRepository->add($price3);
         $this->priceRepository->add($price4);

@@ -28,6 +28,11 @@ class PizzaRepository
         $this->em->persist($pizza);
     }
 
+    public function remove(Pizza $pizza): void
+    {
+        $this->em->remove($pizza);
+    }
+
     public function get($id): Pizza
     {
         /** @var Pizza $pizza */
@@ -35,6 +40,25 @@ class PizzaRepository
             throw new EntityNotFoundException('Pizza is not found.');
         }
         return $pizza;
+    }
+
+    public function getByName(string $name): Pizza
+    {
+        /** @var Pizza $pizza */
+        if (!$pizza = $this->repo->findOneBy(['name' => $name])) {
+            throw new EntityNotFoundException('Pizza is not found.');
+        }
+
+        return $pizza;
+    }
+
+    public function hasByName(string $name): bool
+    {
+        return $this->repo->createQueryBuilder('t')
+                ->select('COUNT(t.id)')
+                ->andWhere('t.name = :name')
+                ->setParameter(':name', $name)
+                ->getQuery()->getSingleScalarResult() > 0;
     }
 
     // /**
